@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="index.css">
+</head>
+<body>
+    <p id = "calc" >calc</p>
+        <div id = "display">
+            <input type="text" id = "dis" placeholder="0">
+        </div>
+        <div id="butt">
+            <div id = "button">
+            <button class="num" onclick="myFunction(7)">7</button>
+            <button class="num" onclick="myFunction(8)">8</button>
+            <button class="num" onclick="myFunction(9)">9</button>
+            <button class="del" onclick="delet()">DEL</button>
+            <button class="num" onclick="myFunction(4)">4</button>
+            <button class="num" onclick="myFunction(5)">5</button>
+            <button class="num" onclick="myFunction(6)">6</button>
+            <button class="num" onclick="myFunction(' + ')">+</button>
+            <button class="num" onclick="myFunction(1)">1</button>
+            <button class="num" onclick="myFunction(2)">2</button>
+            <button class="num" onclick="myFunction(3)">3</button>
+            <button class="num" onclick="myFunction(' - ')">-</button>
+            <button class="num" onclick="myFunction('.')">.</button>
+            <button class="num" onclick="myFunction(0)">0</button>
+            <button class="num" onclick="myFunction(' / ')">/</button>
+            <button class="num" onclick="myFunction(' x ')">x</button>
+            <button class="reset" onclick="resetfields()">RESET</button>
+            <button class="equal" onclick="calculate()">=</button>
+            </div>
+        </div>
+
+<script>
+     function myFunction(n) {
+        const textbox = document.getElementById('dis');
+        textbox.value += n;
+        }
+
+     function delet() {
+        const inputElement = document.getElementById('dis');
+        const currentValue = inputElement.value;
+        const newValue = currentValue.substring(0, currentValue.length - 1);
+        inputElement.value = newValue;
+        }
+
+     function resetfields() {
+        const inputElement = document.getElementById('dis');
+        inputElement.value = '';
+     }
+
+     function calculate() {
+        const expression = document.getElementById('dis').value;
+        try {
+            const modifiedExpression = expression.replace(/x/g, '*');
+            const result = eval(modifiedExpression);
+            document.getElementById('dis').value = result;
+        }
+        catch (error) {
+        }
+
+     }
+
+</script>
+</body>
+</html>
